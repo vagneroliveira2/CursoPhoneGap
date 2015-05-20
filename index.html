@@ -1,0 +1,32 @@
+<html>
+	<head>
+		<title>Simple App</title>
+	</head>
+	<body onload="quandoDomEstiverCarregado()">		
+		<button onclick="teste()" style="height:100%">Camera</button>
+		<img id="myImage"></img>
+		<script src="cordova.js"></script>
+		<script>
+			function quandoDomEstiverCarregado(){				
+				
+				//document.addEventListener('deviceready',teste);
+			}
+			
+			function teste(){
+				alert("teste");
+				navigator.camera.getPicture(onSuccess, onFail, { quality: 50,destinationType: Camera.DestinationType.DATA_URL});			
+			}
+			
+			function onSuccess(imageData) {
+				alert("teste");
+				var image = document.getElementById('myImage');
+				image.src = "data:image/jpeg;base64," + imageData;
+			}
+
+			function onFail(message) {
+				alert('Failed because: ' + message);
+			}
+			
+		</script>
+	</body>
+</html>
